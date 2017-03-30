@@ -1,0 +1,38 @@
+{
+  "name": "@mariusc23/micro-readme",
+  "version": "1.0.0",
+  "description": "Microservice documentation for micro.",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "engines": {
+    "node": ">=7.6"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariusc23/micro-readme.git"
+  },
+  "keywords": [
+    "micro"
+  ],
+  "author": "Marius Craciunoiu <m@m23.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mariusc23/micro-readme/issues"
+  },
+  "homepage": "https://github.com/mariusc23/micro-readme#readme",
+  "dependencies": {
+    "github-markdown-css": "^2.5.0",
+    "highlight.js": "^9.10.0",
+    "marked": "^0.3.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
