@@ -29,7 +29,8 @@
   "dependencies": {
     "github-markdown-css": "^2.5.0",
     "highlight.js": "^9.10.0",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "read-pkg-up": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

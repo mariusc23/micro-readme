@@ -1,6 +1,6 @@
 const path = require('path')
 const url = require('url')
-const { readFile } = require('./lib/file')
+const { readFile, readName } = require('./lib/file')
 const { convertMarkdown } = require('./lib/markdown')
 const { wrapHtml } = require('./lib/html')
 const { getStyles } = require('./lib/styles')
@@ -14,6 +14,7 @@ let markdown = ''
 let html = ''
 let styles = ''
 let result = ''
+let title = ''
 
 const readme = (filePath = defaultFilePath, urlPath = '/', o = {}) => next => async (req, res) => {
   const options = Object.assign({}, defaultOptions, o)
@@ -32,7 +33,8 @@ const readme = (filePath = defaultFilePath, urlPath = '/', o = {}) => next => as
   markdown = markdown || await readFile(filePath || defaultFilePath)
   html = html || await convertMarkdown(markdown)
   styles = styles || await getStyles()
-  result = result || wrapHtml(html, styles)
+  title = title || options.title || await readName(filePath || defaultFilePath)
+  result = result || wrapHtml(html, styles, title)
 
   return result
 }
