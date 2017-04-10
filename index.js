@@ -7,7 +7,7 @@ const { getStyles } = require('./lib/styles')
 
 const defaultFilePath = path.join(process.cwd(), './README.md')
 const defaultOptions = {
-  methods: ['GET'],
+  methods: ['HEAD', 'GET'],
 }
 
 let markdown = ''
