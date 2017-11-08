@@ -22,7 +22,7 @@ const readme = (o = {}) => next => async (req, res) => {
   const options = Object.assign({}, defaultOptions, o)
 
   const { pathname } = url.parse(req.url)
-  if (pathname !== options.url) {
+  if ((pathname !== options.url) && (pathname !== `${options.url}/`)) {
     return next(req, res)
   }
 
