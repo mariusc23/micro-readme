@@ -12,25 +12,29 @@
 const { readme } = require('@mariusc23/micro-readme')
 
 const middleware = [
-  readme(__dirname + '/README.md', '/docs', { methods: ['GET'] })
+  readme({
+    path: __dirname + '/README.md',
+    url '/docs',
+    methods: ['GET'],
+  })
 ]
 ```
 
 ## API
 
-`readme([filePath, urlPath, options])`
+`readme([options])`
 
-#### `filePath`
+#### `options`
+
+##### `options.path`
 
 - path to `README.md`
 - defaults to `process.cwd() + /README.md`
 
-#### `urlPath`
+##### `options.url`
 
 - url to respond to
 - defaults to `/`
-
-#### `options`
 
 ##### `options.methods`
 

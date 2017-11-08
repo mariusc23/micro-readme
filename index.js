@@ -7,6 +7,8 @@ const { getStyles } = require('./lib/styles')
 
 const defaultFilePath = path.join(process.cwd(), './README.md')
 const defaultOptions = {
+  path: defaultFilePath,
+  url: '/',
   methods: ['HEAD', 'GET'],
 }
 
@@ -16,11 +18,11 @@ let styles = ''
 let result = ''
 let title = ''
 
-const readme = (filePath = defaultFilePath, urlPath = '/', o = {}) => next => async (req, res) => {
+const readme = (o = {}) => next => async (req, res) => {
   const options = Object.assign({}, defaultOptions, o)
 
   const { pathname } = url.parse(req.url)
-  if (pathname !== urlPath) {
+  if (pathname !== options.url) {
     return next(req, res)
   }
 
@@ -30,10 +32,10 @@ const readme = (filePath = defaultFilePath, urlPath = '/', o = {}) => next => as
 
   res.setHeader('Content-Type', 'text/html')
 
-  markdown = markdown || await readFile(filePath || defaultFilePath)
+  markdown = markdown || await readFile(options.path)
   html = html || await convertMarkdown(markdown)
   styles = styles || await getStyles()
-  title = title || options.title || await readName(filePath || defaultFilePath)
+  title = title || options.title || await readName(options.path)
   result = result || wrapHtml(html, styles, title)
 
   return result
